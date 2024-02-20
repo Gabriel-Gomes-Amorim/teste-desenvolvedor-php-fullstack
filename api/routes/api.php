@@ -21,5 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('fornecedor/criar', [FornecedorController::class, 'store']);
 Route::get('fornecedor/{id}', [FornecedorController::class, 'show']);
+Route::get('fornecedor', [FornecedorController::class, 'index']);
 Route::put('fornecedor/atualizar/{id}', [FornecedorController::class, 'update']);
 Route::delete('fornecedor/deletar/{id}', [FornecedorController::class, 'destroy']);

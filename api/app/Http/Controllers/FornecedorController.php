@@ -12,6 +12,19 @@ use Illuminate\Support\Facades\Http;
 
 class FornecedorController extends Controller
 {
+
+    public function index()
+    {
+        try {
+            $fornecedores = Fornecedor::all();
+
+            return response()->json(['fornecedores' => $fornecedores, 'status' => 200]);
+        } catch (\Throwable $th) {
+            return response()->json(['mensagem' => 'Erro ao recuperar a lista de fornecedores'], 500);
+        }
+    }
+
+
     public function store(Request $request)
     {
         try {
