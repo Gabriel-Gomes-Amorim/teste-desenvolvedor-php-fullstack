@@ -88,7 +88,7 @@ class FornecedorController extends Controller
 
             return response()->json(['fornecedor' => $fornecedor, 'status' => 200]);
         } catch (\Throwable $th) {
-            return response()->json(['mensagem' => 'Fornecedor não encontrado'], 404);
+            return response()->json(['mensagem' => 'Fornecedor não encontrado', 'status' => 404]);
         }
     }
 
@@ -100,9 +100,9 @@ class FornecedorController extends Controller
 
             $fornecedor->update($request->all());
 
-            return response()->json(['mensagem' => 'Fornecedor atualizado com sucesso!', $fornecedor, 200]);
+            return response()->json(['mensagem' => 'Fornecedor atualizado com sucesso!', 'fornecedor' => $fornecedor, 'status' => 200]);
         } catch (\Throwable $th) {
-            return response()->json(['mensagem' => 'Fornecedor não encontrado'], 404);
+            return response()->json(['mensagem' => 'Fornecedor não encontrado', 'status' => 404]);
         }
     }
 
@@ -113,9 +113,9 @@ class FornecedorController extends Controller
 
             $fornecedor->delete();
 
-            return response()->json(['mensagem' => 'Fornecedor excluido com sucesso'], 200);
+            return response()->json(['mensagem' => 'Fornecedor excluido com sucesso', 'status' => 200]);
         } catch (\Throwable $th) {
-            return response()->json(['mensagem' => 'Fornecedor não encontrado'], 404);
+            return response()->json(['mensagem' => 'Fornecedor não encontrado', 'status' => 404]);
         }
     }
 }
