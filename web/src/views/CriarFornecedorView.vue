@@ -1,5 +1,11 @@
-<script setup></script>
+<script setup>
+import Navbar from '@/components/Navbar.vue'
+import CriarFornecedor from '../components/CriarFornecedor.vue'
+</script>
 
 <template>
-  <main></main>
+  <main>
+    <Navbar />
+    <CriarFornecedor />
+  </main>
 </template>
