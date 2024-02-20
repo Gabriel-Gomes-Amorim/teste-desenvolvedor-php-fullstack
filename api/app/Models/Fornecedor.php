@@ -10,6 +10,8 @@ class Fornecedor extends Model
 {
     use HasFactory, HasUuids;
 
+    protected $table = 'fornecedor';
+
     protected $fillable = [
         'nome',
         'cpf_cnpj',

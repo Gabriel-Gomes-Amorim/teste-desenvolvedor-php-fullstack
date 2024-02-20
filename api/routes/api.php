@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FornecedorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+Route::post('fornecedor/criar', [FornecedorController::class, 'store']);
+Route::get('fornecedor/{id}', [FornecedorController::class, 'show']);
+Route::put('fornecedor/atualizar/{id}', [FornecedorController::class, 'update']);
+Route::delete('fornecedor/deletar/{id}', [FornecedorController::class, 'destroy']);
