@@ -16,10 +16,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Criar</a>
+            <router-link class="nav-link active" aria-current="page" to="/">Criar</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Editar</a>
+            <router-link class="nav-link" to="/editar-fornecedor">Editar</router-link>
           </li>
         </ul>
       </div>
