@@ -1,11 +1,11 @@
 <script setup>
-import Navbar from '@/components/Navbar.vue'
-import EditarFornecedor from '../components/EditarFornecedor.vue'
+import Navbar from '@/components/NavBar/Navbar.vue'
+import TabelaFornecedores from '@/components/Tabela/TabelaFornecedores.vue'
 </script>
 
 <template>
   <main>
     <Navbar />
-    <EditarFornecedor />
+    <TabelaFornecedores />
   </main>
 </template>

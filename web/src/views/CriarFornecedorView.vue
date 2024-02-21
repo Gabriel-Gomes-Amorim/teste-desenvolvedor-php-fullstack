@@ -1,11 +1,11 @@
 <script setup>
-import Navbar from '@/components/Navbar.vue'
-import CriarFornecedor from '../components/CriarFornecedor.vue'
+import FormCriarFornecedor from '@/components/Form/FormCriarFornecedor.vue'
+import Navbar from '@/components/NavBar/Navbar.vue'
 </script>
 
 <template>
   <main>
     <Navbar />
-    <CriarFornecedor />
+    <FormCriarFornecedor />
   </main>
 </template>

@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: 'CriarFornecedorForm',
+  name: 'FormCriarFornecedorForm',
   data() {
     return {
       nome: '',

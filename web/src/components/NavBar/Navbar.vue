@@ -19,7 +19,7 @@
             <router-link class="nav-link active" aria-current="page" to="/">Criar</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/editar-fornecedor">Editar</router-link>
+            <router-link class="nav-link active" to="/editar-fornecedor">Editar</router-link>
           </li>
         </ul>
       </div>
