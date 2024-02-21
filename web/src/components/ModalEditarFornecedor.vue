@@ -120,7 +120,7 @@ export default {
         )
 
         const res = await req.json()
-        if (res.status === 201) {
+        if (res.status === 200) {
           this.$swal({
             position: 'top-end',
             icon: 'success',
