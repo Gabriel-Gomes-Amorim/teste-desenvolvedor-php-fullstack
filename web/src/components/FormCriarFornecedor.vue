@@ -5,7 +5,14 @@
       <form class="row g-3 needs-validation" method="POST" @submit="criarFornecedor">
         <div class="col-md-6 mb-3">
           <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" v-model="nome" id="nome" required />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nome do usuário"
+            v-model="nome"
+            id="nome"
+            required
+          />
         </div>
 
         <div class="col-md-6 mb-3">
@@ -16,6 +23,7 @@
             id="cpf_cnpj"
             v-model="cpf_cnpj"
             v-mask="['###.###.###-##', '##.###.###/####-##']"
+            placeholder="000.000.000-00 ou 00.000.000/0000-00"
             required
           />
         </div>
@@ -27,14 +35,22 @@
             class="form-control"
             id="contato"
             v-model="contato"
-            v-mask="['(##) ####-####', '(##) #####-####']"
+            v-mask="['(##) #####-####']"
+            placeholder="(00) 00000-0000"
             required
           />
         </div>
 
         <div class="col-md-6 mb-3">
           <label for="endereco" class="form-label">Endereço</label>
-          <input type="text" class="form-control" v-model="endereco" id="endereco" required />
+          <input
+            type="text"
+            class="form-control"
+            v-model="endereco"
+            id="endereco"
+            placeholder="Endereço"
+            required
+          />
         </div>
 
         <div class="col-md-6 mb-3">
@@ -43,6 +59,7 @@
             type="text"
             class="form-control"
             v-model="tipo_servico"
+            placeholder="Tipo de Serviço"
             id="tipo_servico"
             required
           />
@@ -54,6 +71,7 @@
             type="text"
             class="form-control"
             v-model="representante"
+            placeholder="Representante"
             id="representante"
             required
           />
@@ -69,7 +87,7 @@
 
 <script>
 export default {
-  name: 'FormCriarFornecedorForm',
+  name: 'FormCriarFornecedor',
   data() {
     return {
       nome: '',

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary p-3 mb-5" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Fornecedor</a>
+      <router-link class="navbar-brand" to="/">Fornecedor</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,6 +20,12 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link active" to="/editar-fornecedor">Editar</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/lista-fornecedores">Listar</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link active" to="/excluir-fornecedor">Excluir</router-link>
           </li>
         </ul>
       </div>

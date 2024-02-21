@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CriarFornecedor from '../views/CriarFornecedorView.vue'
-import EditarFornecedorView from '../views/EditarFornecedorView.vue'
+import ListaFornecedores from '../views/ListaFornecedoresView.vue'
+import EditarFornecedor from '../views/EditarFornecedorView.vue'
+import ExcluirFornecedor from '../views/ExcluirFornecedorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,8 +14,18 @@ const router = createRouter({
     },
     {
       path: '/editar-fornecedor',
-      name: 'editarFornecedor',
-      component: EditarFornecedorView
+      name: 'EditarFornecedor',
+      component: EditarFornecedor
+    },
+    {
+      path: '/lista-fornecedores',
+      name: 'ListaFornecedores',
+      component: ListaFornecedores
+    },
+    {
+      path: '/excluir-fornecedor',
+      name: 'ExcluirFornecedor',
+      component: ExcluirFornecedor
     }
   ]
 })

@@ -1,11 +1,11 @@
 <script setup>
-import FormEditarFornecedor from '@/components/FormEditarFornecedor.vue'
+import ListaFornecedores from '@/components/ListaFornecedores.vue'
 import Navbar from '@/components/Navbar.vue'
 </script>
 
 <template>
   <main>
     <Navbar />
-    <FormEditarFornecedor />
+    <ListaFornecedores />
   </main>
 </template>

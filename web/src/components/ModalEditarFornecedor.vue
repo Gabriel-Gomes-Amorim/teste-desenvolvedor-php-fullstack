@@ -37,7 +37,7 @@
                 id="cpf_cnpj"
                 v-model="fornecedorEdicao.cpf_cnpj"
                 v-mask="['###.###.###-##', '##.###.###/####-##']"
-                required
+                readonly
               />
             </div>
 
@@ -135,6 +135,10 @@ export default {
           this.fornecedorEdicao.endereco = ''
           this.fornecedorEdicao.tipo_servico = ''
           this.fornecedorEdicao.representante = ''
+
+          setTimeout(() => {
+            location.reload()
+          }, 1500)
         } else {
           this.$swal({
             icon: 'error',
