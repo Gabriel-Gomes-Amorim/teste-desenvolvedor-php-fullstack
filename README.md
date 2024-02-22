@@ -1,75 +1,43 @@
-[![](https://startgov.com.br/wp-content/uploads/2023/11/LOGO_VETOR.png)](https://www.startgov.com.br)
+# Instruções de Configuração e Execução do Projeto
 
-# Nossa empresa
+## Backend:
 
-A StartGov é uma empresa que se dedica a criar soluções inovadoras focadas na gestão de contratações, especialmente voltadas para o setor público. A empresa oferece um conjunto de ferramentas destinadas a facilitar e otimizar processos burocráticos relacionados a licitações, contratações diretas, gestão de contratos, ordens de fornecimento e serviço, além do cadastro de fornecedores. Essas soluções visam aumentar a celeridade dos trâmites administrativos e permitir a implementação de fluxos e processos padronizados.
+### Configuração do Ambiente:
 
-# Conheça mais sobre a StartGov
+1. Renomeie o arquivo `.env.example` para `.env` e preencha as informações do banco de dados, incluindo nome do banco de dados, nome de usuário e senha.
 
-- Nosso Site - https://www.startgov.com.br/
-- Nosso Instagram - https://www.instagram.com/startgov/
+### Execução do Docker:
 
-## Teste para Desenvolvedor PHP/Laravel e Vue.js
+1. Navegue até a pasta `api` do projeto.
+2. Execute `docker-compose up -d` para iniciar os containers Docker.
+3. Verifique se os containers estão em execução com `docker ps`.
 
-Bem-vindo ao teste de desenvolvimento para a posição de Desenvolvedor PHP/Laravel e Vue.js. O objetivo deste teste é desenvolver uma plataforma para o cadastro de fornecedores, permitindo a busca por CNPJ ou CPF, utilizando Laravel no backend e Vue.js no frontend.
+### Configuração Adicional e Migrações:
 
-## Descrição do Projeto
+1. Acesse o container do backend com `docker-compose exec -it (id ou nome container) bash`.
+2. Dentro do container, execute `composer install` para instalar as dependências do PHP.
+3. Gere a chave de criptografia com `php artisan key:generate`.
+4. Execute as migrações do banco de dados com `php artisan migrate`.
 
-### Backend (API Laravel):
+Após seguir esses passos, a API estará pronta para uso.
 
-#### CRUD de Fornecedores:
+## Frontend:
 
-- **Criar Fornecedor:**
-  - Permita o cadastro de fornecedores usando CNPJ ou CPF, incluindo informações como nome/nome da empresa, contato, endereço, etc.
-  - Valide a integridade e o formato dos dados, como o formato correto de CNPJ/CPF e a obrigatoriedade de campos.
+### Configuração do Ambiente:
 
-- **Editar Fornecedor:**
-  - Facilite a atualização das informações de fornecedores, mantendo a validação dos dados.
+1. Renomeie o arquivo `.env.example` para `.env` e defina a variável `VITE_API_URL` como a URL da API, por exemplo: `'http://localhost:8989/api'`.
 
-- **Excluir Fornecedor:**
-  - Possibilite a remoção segura de fornecedores.
+### Construção e Execução do Docker:
 
-- **Listar Fornecedores:**
-  - Apresente uma lista paginada de fornecedores, com filtragem e ordenação.
+1. Execute `docker build -t web-teste:web-teste .` para construir a imagem Docker do frontend.
+2. Execute `docker run -d -p 3333:3333 web-teste:web-teste` para iniciar o contêiner Docker do frontend. Se desejar usar outra porta, ajuste também no arquivo `vite.config.js`.
 
-#### Migrations:
+Agora você pode acessar o frontend em `localhost:3333`.
 
-- Utilize migrations do Laravel para definir a estrutura do banco de dados, garantindo uma boa organização e facilidade de manutenção.
+# Dúvidas ou Sugestões?
 
-### Frontend (Vue.js):
+Se surgir qualquer dúvida durante o processo de configuração ou execução do projeto, não hesite em entrar em contato!
 
-- Desenvolva interfaces para todas as operações do CRUD, com validações e feedback visual adequado.
+LinkedIn: [Gabriel Gomes](https://www.linkedin.com/in/gabriel-gomes99)
 
-## Requisitos
-
-### Backend:
-- Implementar busca por CNPJ na [BrasilAPI](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1{cnpj}/get) ou qualquer outro endpoint público.
-
-## Tecnologias a serem utilizadas
-- HTML
-- CSS
-- VueJS 2.x ou superior
-- Framework Laravel (PHP) 9.x ou superior
-- MySQL ou Postgres
-- Pode utilizar Bootstrap ou qualquer outro UI Design
-
-## Critérios de Avaliação
-
-- Adesão aos requisitos funcionais e técnicos.
-- Qualidade do código, incluindo organização, padrões de desenvolvimento e segurança.
-- Usabilidade e design das interfaces de usuário.
-- Documentação do projeto, incluindo um README detalhado com instruções de instalação e operação.
-
-## Bônus
-
-- Implementação de testes automatizados.
-- Dockerização do ambiente de desenvolvimento.
-- Implementação de cache para otimizar o desempenho.
-
-## Entrega
-
-- Para iniciar o teste, faça um fork deste repositório; Se você apenas clonar o repositório não vai conseguir fazer push.
-- Crie uma branch com o nome que desejar;
-- Altere o arquivo README.md com as informações necessárias para executar o seu teste (comandos, migrations, seeds, etc);
-- Depois de finalizado, envie-nos o pull request;
-
+GitHub: [Gabriel-Gomes-Amorim](https://github.com/Gabriel-Gomes-Amorim)
