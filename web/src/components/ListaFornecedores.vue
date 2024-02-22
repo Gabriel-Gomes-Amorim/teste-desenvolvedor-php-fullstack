@@ -18,7 +18,8 @@
           <div class="col-md-4">
             <!-- Ordenação -->
             <div class="form-group">
-              <select class="form-control" v-model="ordenacao">
+              <select class="form-select" v-model="ordenacao">
+                <option disabled>Selecione</option>
                 <option value="asc">Ordem Crescente</option>
                 <option value="desc">Ordem Decrescente</option>
               </select>
