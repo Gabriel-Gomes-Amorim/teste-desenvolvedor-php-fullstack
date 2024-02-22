@@ -14,7 +14,7 @@
 
 ### Configuração Adicional e Migrações:
 
-1. Acesse o container do backend com `docker-compose exec -it (id ou nome container) bash`.
+1. Acesse o container do backend com `docker-compose exec -it app bash`.
 2. Dentro do container, execute `composer install` para instalar as dependências do PHP.
 3. Gere a chave de criptografia com `php artisan key:generate`.
 4. Execute as migrações do banco de dados com `php artisan migrate`.
