@@ -16,16 +16,25 @@ class FornecedorController extends Controller
     public function index(Request $request)
     {
         try {
-
             $perPage = $request->input('per_page', 10);
+            $query = Fornecedor::query();
 
-            $fornecedores = Fornecedor::paginate($perPage);
+            if ($request->has('nome')) {
+                $query->where('nome', 'like', '%' . $request->input('nome') . '%');
+            }
+            if ($request->has('order')) {
+                $order = $request->input('order');
+                $query->orderBy('cpf_cnpj', $order);
+            }
+
+            $fornecedores = $query->paginate($perPage);
 
             return response()->json(['fornecedores' => $fornecedores, 'status' => 200]);
         } catch (\Throwable $th) {
             return response()->json(['mensagem' => 'Erro ao recuperar a lista de fornecedores', 'status' => 500]);
         }
     }
+
 
     public function store(Request $request)
     {
