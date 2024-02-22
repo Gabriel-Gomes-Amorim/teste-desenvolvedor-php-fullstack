@@ -30,6 +30,47 @@
             </tr>
           </tbody>
         </table>
+
+        <div class="d-flex justify-content-end">
+          <nav>
+            <ul class="pagination">
+              <li class="page-item" v-if="pagination.prev_page_url">
+                <a
+                  class="page-link"
+                  href="#"
+                  @click.prevent="carregarPagina(pagination.prev_page_url)"
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li
+                class="page-item"
+                v-for="page in pagination.last_page"
+                :key="page"
+                :class="{ active: pagination.current_page === page }"
+              >
+                <a
+                  class="page-link"
+                  href="#"
+                  @click.prevent="carregarPagina(pagination.path + '?page=' + page)"
+                  >{{ page }}</a
+                >
+              </li>
+              <li class="page-item" v-if="pagination.next_page_url">
+                <a
+                  class="page-link"
+                  href="#"
+                  @click.prevent="carregarPagina(pagination.next_page_url)"
+                  aria-label="Next"
+                >
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -47,7 +88,8 @@ export default {
         endereco: '',
         tipo_servico: '',
         representante: ''
-      }
+      },
+      pagination: {}
     }
   },
   created() {
@@ -60,6 +102,30 @@ export default {
         const res = await req.json()
         if (res.status === 200) {
           this.fornecedores = res.fornecedores.data
+          this.pagination = res.fornecedores
+        } else {
+          this.$swal({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.mensagem || 'Algo deu errado ao carregar os fornecedores!'
+          })
+        }
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algo deu errado ao carregar os fornecedores!'
+        })
+        console.error(error)
+      }
+    },
+    async carregarPagina(url) {
+      try {
+        const req = await fetch(url)
+        const res = await req.json()
+        if (res.status === 200) {
+          this.fornecedores = res.fornecedores.data
+          this.pagination = res.fornecedores
         } else {
           this.$swal({
             icon: 'error',
