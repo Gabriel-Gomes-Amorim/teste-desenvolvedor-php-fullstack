@@ -114,7 +114,7 @@ export default {
       const dataJson = JSON.stringify(data)
 
       try {
-        const req = await fetch('http://localhost:8989/api/fornecedor/criar', {
+        const req = await fetch(`${import.meta.env.VITE_API_URL}/fornecedor/criar`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: dataJson

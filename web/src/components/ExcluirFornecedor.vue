@@ -45,7 +45,7 @@ export default {
   methods: {
     async carregarFornecedores() {
       try {
-        const req = await fetch('http://localhost:8989/api/fornecedor')
+        const req = await fetch(`${import.meta.env.VITE_API_URL}/fornecedor`)
         const res = await req.json()
         if (res.status === 200) {
           this.fornecedores = res.fornecedores.data
@@ -88,7 +88,7 @@ export default {
         if (result.isConfirmed) {
           try {
             const req = await fetch(
-              `http://localhost:8989/api/fornecedor/deletar/${fornecedorId}`,
+              `${import.meta.env.VITE_API_URL}/fornecedor/deletar/${fornecedorId}`,
               {
                 method: 'DELETE'
               }

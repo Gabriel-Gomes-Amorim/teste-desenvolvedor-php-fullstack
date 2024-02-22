@@ -130,7 +130,7 @@ export default {
       try {
         const filtro = this.filtroNome ? `nome=${this.filtroNome}` : ''
         const ordenacao = this.ordenacao ? `&order=${this.ordenacao}` : ''
-        const req = await fetch(`http://localhost:8989/api/fornecedor?${filtro}${ordenacao}`)
+        const req = await fetch(`${import.meta.env.VITE_API_URL}/fornecedor?${filtro}${ordenacao}`)
         const res = await req.json()
         if (res.status === 200) {
           this.fornecedores = res.fornecedores.data
@@ -154,7 +154,7 @@ export default {
     async carregarFornecedores() {
       try {
         const filtro = this.filtroNome ? `?nome=${this.filtroNome}` : ''
-        const req = await fetch(`http://localhost:8989/api/fornecedor${filtro}`)
+        const req = await fetch(`${import.meta.env.VITE_API_URL}/fornecedor${filtro}`)
         const res = await req.json()
         if (res.status === 200) {
           this.fornecedores = res.fornecedores.data

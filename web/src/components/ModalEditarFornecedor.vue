@@ -109,7 +109,7 @@ export default {
 
       try {
         const req = await fetch(
-          `http://localhost:8989/api/fornecedor/atualizar/${this.fornecedorEdicao.id}`,
+          `${import.meta.env.VITE_API_URL}/fornecedor/atualizar/${this.fornecedorEdicao.id}`,
           {
             method: 'PUT',
             headers: {
