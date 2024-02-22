@@ -13,17 +13,19 @@ use Illuminate\Support\Facades\Http;
 class FornecedorController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $fornecedores = Fornecedor::all();
+
+            $perPage = $request->input('per_page', 10);
+
+            $fornecedores = Fornecedor::paginate($perPage);
 
             return response()->json(['fornecedores' => $fornecedores, 'status' => 200]);
         } catch (\Throwable $th) {
-            return response()->json(['mensagem' => 'Erro ao recuperar a lista de fornecedores'], 500);
+            return response()->json(['mensagem' => 'Erro ao recuperar a lista de fornecedores', 'status' => 500]);
         }
     }
-
 
     public function store(Request $request)
     {
