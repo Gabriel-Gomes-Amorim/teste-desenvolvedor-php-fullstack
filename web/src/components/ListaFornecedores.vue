@@ -3,6 +3,33 @@
     <h2 class="text-center mt-lg-5 mb-5">Fornecedores</h2>
     <div class="d-flex justify-content-center">
       <div class="col-lg-8">
+        <!-- Campo de entrada para o filtro por nome -->
+        <div class="row p-5">
+          <div class="col">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                v-model="filtroNome"
+                placeholder="Filtrar por nome"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <!-- Seletor de ordenação -->
+            <div class="form-group">
+              <select class="form-control" v-model="ordenacao">
+                <option value="asc">Ordem Crescente</option>
+                <option value="desc">Ordem Decrescente</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <!-- Botão para acionar o filtro -->
+            <button type="submit" class="btn btn-primary" @click="filtrarPorNome">Filtrar</button>
+          </div>
+        </div>
+
         <table class="table">
           <thead>
             <tr class="bg-dark">
@@ -96,9 +123,35 @@ export default {
     this.carregarFornecedores()
   },
   methods: {
+    async filtrarPorNome() {
+      try {
+        const filtro = this.filtroNome ? `nome=${this.filtroNome}` : ''
+        const ordenacao = this.ordenacao ? `&order=${this.ordenacao}` : ''
+        const req = await fetch(`http://localhost:8989/api/fornecedor?${filtro}${ordenacao}`)
+        const res = await req.json()
+        if (res.status === 200) {
+          this.fornecedores = res.fornecedores.data
+          this.pagination = res.fornecedores
+        } else {
+          this.$swal({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.mensagem || 'Algo deu errado ao carregar os fornecedores!'
+          })
+        }
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Algo deu errado ao carregar os fornecedores!'
+        })
+        console.error(error)
+      }
+    },
     async carregarFornecedores() {
       try {
-        const req = await fetch('http://localhost:8989/api/fornecedor')
+        const filtro = this.filtroNome ? `?nome=${this.filtroNome}` : ''
+        const req = await fetch(`http://localhost:8989/api/fornecedor${filtro}`)
         const res = await req.json()
         if (res.status === 200) {
           this.fornecedores = res.fornecedores.data
