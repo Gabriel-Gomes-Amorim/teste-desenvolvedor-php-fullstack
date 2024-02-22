@@ -65,6 +65,15 @@ export default {
       }
     },
     showAlert(fornecedorId) {
+      if (!this.fornecedorSelecionado) {
+        this.$swal({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Por favor, selecione um fornecedor antes de excluir!'
+        })
+        return
+      }
+
       this.$swal({
         title: 'Tem certeza?',
         text: 'Você não poderá reverter isso!',
