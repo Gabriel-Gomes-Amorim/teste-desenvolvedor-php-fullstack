@@ -62,7 +62,8 @@ export default {
         endereco: '',
         tipo_servico: '',
         representante: ''
-      }
+      },
+      fornecedorSelecionado: null
     }
   },
   created() {

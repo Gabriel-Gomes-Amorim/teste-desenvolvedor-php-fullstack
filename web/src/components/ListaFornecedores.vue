@@ -19,7 +19,6 @@
             <!-- Ordenação -->
             <div class="form-group">
               <select class="form-select" v-model="ordenacao">
-                <option disabled>Selecione</option>
                 <option value="asc">Ordem Crescente</option>
                 <option value="desc">Ordem Decrescente</option>
               </select>
@@ -109,6 +108,8 @@ export default {
   data() {
     return {
       fornecedores: [],
+      filtroNome: '',
+      ordenacao: '',
       fornecedorEdicao: {
         nome: '',
         cpf_cnpj: '',
@@ -120,6 +121,7 @@ export default {
       pagination: {}
     }
   },
+
   created() {
     this.carregarFornecedores()
   },

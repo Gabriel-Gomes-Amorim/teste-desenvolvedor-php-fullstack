@@ -12,6 +12,7 @@
         {{ fornecedor.nome }} - {{ fornecedor.cpf_cnpj }}
       </option>
     </select>
+
     <button type="button" class="btn btn-danger m-1" @click="showAlert(fornecedorSelecionado)">
       <svg
         xmlns="http://www.w3.org/2000/svg"
