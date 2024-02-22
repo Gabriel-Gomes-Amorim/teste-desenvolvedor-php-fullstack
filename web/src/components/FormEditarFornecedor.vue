@@ -74,7 +74,7 @@ export default {
         const req = await fetch('http://localhost:8989/api/fornecedor')
         const res = await req.json()
         if (res.status === 200) {
-          this.fornecedores = res.fornecedores
+          this.fornecedores = res.fornecedores.data
         } else {
           this.$swal({
             icon: 'error',
